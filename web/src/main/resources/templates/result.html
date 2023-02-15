@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+  <link href="${pageContext.request.contextPath} ../../css/style.css" rel="stylesheet">
+
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+  <link href="${pageContext.request.contextPath} ../../css/player.css" rel="stylesheet">
+
+
+  <title>Music</title>
+</head>
+<body>
+
+<!-- partial:index.partial.html -->
+<div class="site-wrapper">
+
+  <div class="site-wrapper-inner">
+
+    <div class="container">
+
+      <div class="masthead clearfix">
+        <div class="container inner">
+          <h3 class="masthead-brand">Music</h3>
+          <nav>
+            <ul class="nav masthead-nav">
+              <li class="active"><a href="/">Глава</a></li>
+              <li><a href="#">Избранное</a></li>
+              <li><a href="/login">Войти</a></li>
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+        <section>
+          <img th:src="${img}" onError="this.src='https://media.tenor.com/tSE7OxtpD0gAAAAC/processing-color.gif'" height="150" width="150">
+
+          <header>
+            <div class='left'>
+              <h1 th:text="${artist}"/>
+              <h2 th:text="${name}"/>
+            </div>
+            <div class='right'>
+              <audio id="demo" th:src="${link}"></audio>
+              <button id='play'></button>
+              <button id='pause'></button>
+            </div>
+          </header>
+        </section>
+
+        <!-- <img th:src="${el.input}"/> -->
+       <!-- <img th:src="@{~}"/> -->
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+<!-- partial -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<!-- <script  src="../static/js/script.js"></script> -->
+<script  src="${pageContext.request.contextPath} ../../js/script.js"></script>
+
+</body>
+</html>

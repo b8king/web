@@ -5,7 +5,7 @@
   <title>Регистрация</title>
 
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
-  <link href="../../static/css/style.css" rel="stylesheet" type="text/css" media="screen"/>
+  <link href="${pageContext.request.contextPath} ../../css/style.css" rel="stylesheet">
 
   
 </head>
@@ -26,39 +26,39 @@
               <h3 class="masthead-brand">Music</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li><a href="index.html">Глава</a></li>
+                  <li><a href="/">Глава</a></li>
                   <li><a href="#">Избранное</a></li>
-                  <li class="active"><a href="login.html">Войти</a></li>
+                  <li class="active"><a href="/login">Войти</a></li>
                 </ul>
               </nav>
             </div>
           </div>
 
-          <!--АНИМАЦИЯ ТЕКСТ-->
+          <!--  -->
 
           <div class="form">
             <div class="title">Регистрация</div>
        
             <div class="input-container ic1">
-              <input id="firstname" class="input" type="text" placeholder=" " />
+              <input id="login" class="input" type="text" placeholder=" " />
               <div class="cut"></div>
-              <label for="firstname" class="placeholder">Логин</label>
+              <label for="login" class="placeholder">Логин</label>
             </div>
             <div class="input-container ic2">
-              <input id="lastname" class="input" type="text" placeholder=" " />
+              <input id="pass" class="input" type="text" placeholder=" " />
               <div class="cut"></div>
-              <label for="lastname" class="placeholder">Пароль</label>
+              <label for="pass" class="placeholder">Пароль</label>
             </div>  
             <div class="input-container ic2">
-                <input id="lastname" class="input" type="text" placeholder=" " />
+                <input id="return" class="input" type="text" placeholder=" " />
                 <div class="cut"></div>
-              <label for="lastname" class="placeholder">Повторите пароль</label>
+              <label for="return" class="placeholder">Повторите пароль</label>
             </div>
             <button type="text" class="submit">Зарегистрироваться</button>
-            <br> <br> <a href="login.html">Войти</a>
+            <br> <br> <a href="/login">Войти</a>
           </div>
 
-        <!--АНИМАЦИЯ ТЕКСТ-->  
+        <!---->
           </div>
 
         </div>

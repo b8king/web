@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>🎵</title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+  <link href="${pageContext.request.contextPath} ../../css/player.css" rel="stylesheet">
+  <!-- <link href="../../resources/static/css/player.css" rel="stylesheet"> -->
+
+  </head>
+  <body>
+  <!-- partial:index.partial.html -->
+<!-- Tracks used in this music/audio player application are free to use. I downloaded them from Soundcloud and NCS websites. I am not the owner of these tracks. -->
+
+<section>
+  <img th:src="${img}" onError="this.src='https://media.tenor.com/tSE7OxtpD0gAAAAC/processing-color.gif'" height="150" width="150">
+
+  <header>
+    <div class='left'>
+      <h1 th:text="${artist}"/>
+      <h2 th:text="${name}"/>
+      
+    </div>
+    <div class='right'>
+      <audio id="demo" th:src="${link}"></audio>
+      <button id='play'></button>
+      <button id='pause'></button>
+    </div>
+  </header>
+</section>
+
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <!-- <script  src="../static/js/script.js"></script> -->
+ <script  src="${pageContext.request.contextPath} ../../js/script.js"></script>
+
+</body>
+</html>
