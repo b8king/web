@@ -36,17 +36,19 @@ body .content {
 
 body .player {
   z-index: 10;
-  background: #f9f9f9;
+  background: #FFF;
   color: #000;
   min-height: 100px;
   max-height: 80px;
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
 }
 body .player .left {
   width: 100px;
-  background-image: url(https://i.scdn.co/image/9ca53beeb365f468b023a8360634f309325b5487);
+  background-image: url(https://sun6-22.userapi.com/s/v1/ig2/RDPrnjWLN7GQWoJ1rijxodbGQOKrHfvUeeKxL3-7vAPuKmCr7oSEzBE073SlJEwg-1wRuVnA-cch53lht2x7gOFY.jpg?size=1024x1024&quality=96&crop=0,0,1024,1024&ava=1);
   background-size: cover;
+  border-radius: 10px;
 }
 body .player .right {
   flex-grow: 1;
