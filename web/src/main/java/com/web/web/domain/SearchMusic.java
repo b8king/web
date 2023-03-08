@@ -3,8 +3,13 @@ package com.web.web.domain;
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,84 +18,57 @@ import org.jsoup.select.Elements;
 
 public class SearchMusic {
     private Document document;
+    public static String links,artist,track_name,url,getUrl,photo_link;
+    String server = "https://ru.muzikavsem.org";
+
+
     private Element element;
-    public String getName;
+    public static String Name; //
 
-    public String getImage;
-    public String getArtist;
-    public static String valid_URL;
-    public static String FILE_URL;
-    public static String PLAY_URL;
-    public static String PLAY_URL_2;
-    public static String PLAY_URL_3;
-    public static String IMG_URL;
-    public static String IMG_NAME = "";
-    public static String FILE_NAME = "";
 
-    public void getSearch(String TRACK_NAME, int index) throws IOException {
+    public static String Artist; //
 
-        try {
-            document = Jsoup.connect
-                    ("https://ru.hitmotop.com/search?q=" + TRACK_NAME).get();
-            Elements anchors = document.getElementsByClass("track__download-btn");
+    public static String MASSIVE_URL;
 
-            String links = anchors.attr("href");
-            FILE_URL = links;
-            String tepm = FILE_URL.replace("https://ru.hitmotop.com/","");
-            PLAY_URL = "https://cdn3.deliciouspeaches.com/"+tepm;
-            PLAY_URL_3 = "https://cdn2.deliciouspeaches.com/"+tepm;
-            PLAY_URL_2 = "https://ds.cdn1.deliciouspeaches.com/"+tepm;
-            //System.out.println("--> " + tepm);
-            Elements anchors1 = document.getElementsByClass("track__title");
-            getName = anchors1.eachText().get(index);
-            Elements anchors2 = document.getElementsByClass("track__desc");
-            getArtist = anchors2.eachText().get(index);
-            Elements anchors3 = document.getElementsByClass("track__img");
-            String img = anchors3.attr("style");
-            String newStr = img.replaceAll("background-image: url", "");
-            String imgCut = newStr.replaceAll("\\p{P}", "/");
+    public static ArrayList<Carcas> list = new ArrayList();
 
-            String cut = "https://ru.hitmotop.com" + imgCut.substring(2, 25) + ".jpg";
-            IMG_URL = cut;
-            //System.out.println(cut);
-            System.out.println(FILE_URL + " --> " + " [" + getArtist + "] " + getName);
-            try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
-                 FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
-                byte dataBuffer[] = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
-                    fileOutputStream.write(dataBuffer, 0, bytesRead);
-                }
-            } catch (IOException e) {
-                // handle exception
+
+
+
+    public void search(String get_search) throws IOException {
+
+
+        document = Jsoup.connect
+                ("https://ru.muzikavsem.org/search/" + get_search).get();
+        int num = document.getElementsByClass("top-tracks__download-btn clr-btn").size();
+        list.clear();
+
+
+        for (int i = 0; i < num; i++) {
+            Element path = document.getElementsByClass("top-tracks__download-btn clr-btn").get(i);
+            Element name = document.getElementsByClass("top-tracks__track").get(i);
+            Element title = document.getElementsByClass("top-tracks__artist").get(i);
+            Element photo = document.getElementsByClass("top-tracks__img").get(i);
+            links = path.attr("href");
+            artist = name.text();
+            track_name = title.text();
+            photo_link = photo.text();
+            url = links;
+
+            MASSIVE_URL = server + url;
+
+
+            Artist = artist;
+            Name = track_name;
+
+            Carcas carcas = new Carcas(MASSIVE_URL,Artist,Name,photo_link);
+            list.add(carcas);
+            System.out.println(photo_link);
+
+
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        finally {
-            System.out.println("200OK");
+
+            System.out.println("--> "+list.toString());
         }
 
-    }
-    public void validator() throws IOException {
-        String s = "200";
-        URL url = new URL(PLAY_URL);
-        HttpURLConnection http = (HttpURLConnection) url.openConnection();
-        String statusCode = String.valueOf(http.getResponseCode());
-        System.out.println("server 1:" + statusCode);
-        if (statusCode != s) {
-            URL url2 = new URL(PLAY_URL_2);
-            HttpURLConnection http2 = (HttpURLConnection) url2.openConnection();
-            String statusCode2 = String.valueOf(http2.getResponseCode());
-            System.out.println("server 2:" + statusCode2);
-            valid_URL = PLAY_URL_2;
-            if (statusCode2 != s) {
-                URL url3 = new URL(PLAY_URL_3);
-                HttpURLConnection http3 = (HttpURLConnection) url3.openConnection();
-                String statusCode3 = String.valueOf(http3.getResponseCode());
-                System.out.println("server 3:" + statusCode3);
-                valid_URL = PLAY_URL_3;
-            }
-        }
-    }
 }

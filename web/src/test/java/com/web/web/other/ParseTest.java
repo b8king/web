@@ -1,4 +1,4 @@
-package com.web.web;
+package com.web.web.other;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
@@ -54,7 +54,7 @@ public class ParseTest {
             String cut = "https://ru.hitmotop.com" + imgCut.substring(2, 25) + ".jpg";
             IMG_URL = cut;
             //System.out.println(cut);
-            //System.out.println(FILE_URL + " --> " + " [" + getArtist + "] " + getName);
+            System.out.println(FILE_URL + " --> " + " [" + getArtist + "] " + getName);
 
 
             try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());

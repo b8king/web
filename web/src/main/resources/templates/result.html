@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/x html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -37,28 +37,41 @@
         </div>
       </div>
 
-        <section>
-          <img th:src="${img}" onError="this.src='https://media.tenor.com/tSE7OxtpD0gAAAAC/processing-color.gif'" height="150" width="150">
 
-          <header>
-            <div class='left'>
-              <h1 th:text="${artist}"/>
-              <h2 th:text="${name}"/>
-            </div>
-            <div class='right'>
-              <audio id="demo" th:src="${link}"></audio>
-              <button id='play'></button>
-              <button id='pause'></button>
-            </div>
-          </header>
-        </section>
 
-        <!-- <img th:src="${el.input}"/> -->
-       <!-- <img th:src="@{~}"/> -->
+
+
+<section th:each="continet : ${continents}">
+
+
+<br>
+      <div class="content">
+        <div class="lyrics"></div>
       </div>
 
+      <div class="player" >
+        <div class="left"></div>
+        <div class="right">
+          <div class="top">
+            <a class="song"  th:text="${continet.trackName}"></a>
+            <a class="artist" th:text="${continet.artist}"></a>
+          </div>
+          <div class="bottom">
+            <video controls="" _autoplay="" name="media"><source th:src="${continet.ToLink}" type="audio/mpeg"></video>
+          </div>
+        </div>
+      </div>
 
-    </div>
+</section>
+  </section>
+</section>
+
+
+
+
+
+
+      </div>
 
   </div>
 
@@ -66,7 +79,7 @@
 <!-- partial -->
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-<!-- <script  src="../static/js/script.js"></script> -->
+<!-- <script  src="../static/js/script.js"></script> <div th:each="el : ${post}"> -->
 <script  src="${pageContext.request.contextPath} ../../js/script.js"></script>
 
 </body>
