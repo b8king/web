@@ -1,72 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Регистрация</title>
-
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
-  <link href="${pageContext.request.contextPath} ../../css/style.css" rel="stylesheet">
-
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link href="${pageContext.request.contextPath} ../../css/style.css" rel="stylesheet">
+    <title>Регистрация</title>
 </head>
-
-
-
-
+<header th:replace="/block/header :: head"></header>
 <body>
-<!-- partial:index.partial.html -->
-<div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="container">
-
-          <div class="masthead clearfix">
-            <div class="container inner">
-              <h3 class="masthead-brand">Music</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li><a href="/">Глава</a></li>
-                  <li><a href="#">Избранное</a></li>
-                  <li class="active"><a href="/login">Войти</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <!--  -->
-
-          <div class="form">
-            <div class="title">Регистрация</div>
-       
-            <div class="input-container ic1">
-              <input id="login" class="input" type="text" placeholder=" " />
-              <div class="cut"></div>
-              <label for="login" class="placeholder">Логин</label>
-            </div>
-            <div class="input-container ic2">
-              <input id="pass" class="input" type="text" placeholder=" " />
-              <div class="cut"></div>
-              <label for="pass" class="placeholder">Пароль</label>
-            </div>  
-            <div class="input-container ic2">
-                <input id="return" class="input" type="text" placeholder=" " />
-                <div class="cut"></div>
-              <label for="return" class="placeholder">Повторите пароль</label>
-            </div>
-            <button type="text" class="submit">Зарегистрироваться</button>
-            <br> <br> <a href="/login">Войти</a>
-          </div>
-
-        <!---->
-          </div>
-
-        </div>
-
-      </div>
-
+<div class="form">
+    <div class="title">Регистрация</div>
+    <div class="input-container ic1">
+        <input id="login" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="login" class="placeholder">Логин</label>
     </div>
-<!-- partial -->
-  
+    <div class="input-container ic2">
+        <input id="pass" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="pass" class="placeholder">Пароль</label>
+    </div>
+    <div class="input-container ic2">
+        <input id="return" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="return" class="placeholder">Повторите пароль</label>
+    </div>
+    <button type="text" class="submit">Зарегистрироваться</button><br><br>
+    <a href="/login">Войти</a>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

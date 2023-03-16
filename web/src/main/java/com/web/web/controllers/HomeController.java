@@ -29,10 +29,10 @@ public class HomeController  {
         return "index";
     }
 
+
+
     @GetMapping(value = "/result")
     public String result(Model model) throws IOException {
-
-
 
         Iterable<TestEntity> testEntities = repository.findAll();
 
