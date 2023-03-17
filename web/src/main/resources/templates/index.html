@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'/>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css"/>
     <link href="${pageContext.request.contextPath} ../../css/style.css" rel="stylesheet">
     <title>Music</title>
 </head>
 <header th:replace="/block/header :: head"></header>
 <body>
+<div class="video-content">
+    <div th:replace="/content/clip :: clip"/>
+</div>
 
 
+
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+<script>
+const player = new Plyr('#player');
+player.setAutopause(false)
+</script>
 </body>
 </html>

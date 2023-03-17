@@ -2,7 +2,65 @@
  * Globals
  */
 
-/* Links */
+/* кастом плеер */
+audio::-webkit-media-controls-panel {
+  background-color: #8D929C;
+  outline:none;
+  border:0;
+}
+
+
+.video-content{
+    width: 40%;
+    height: 40%;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+
+.fit-picture {
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0; */
+    width: 70px;
+    height: 70px;
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    /* padding: 30px 0; */
+    /* height: 50px; */
+
+    bottom: 0;
+    margin-top: auto;
+    border-radius: 7px;
+    margin-right: 600px;
+}
+
+
+
+
+
+
+
+audio, canvas, progress, video {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-top: -40px;
+}
+
+
+
+
+
+
+
+
+.song{
+margin-top: 10px;
+}
+
+
 
 
 a,
@@ -10,6 +68,33 @@ a:focus,
 a:hover {
   color: #fff;
 }
+
+.inner {
+    padding: 15px;
+    background: #161C26;
+    /* height: 70px; */
+    /* background: #333; */
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 70px;
+    background: #333;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+
 
 /* Custom default button */
 .btn-default,
@@ -60,10 +145,19 @@ color:#fff;
   margin-left: auto;
 }
 
+
+
+
+
+
+
 /* Padding for spacing */
 .inner {
   padding: 15px;
   background: #161C26;
+
+
+
 }
 
 
@@ -94,7 +188,7 @@ border-radius:5px;
 
 #rectangle {
     width: 700px;
-    height: 85px;
+    height: auto;
     background: #2D3540;
     border-radius: 12px;
     margin: 10px auto;
@@ -206,7 +300,7 @@ border-radius:5px;
   }
 a{
 	font: 1em Hind, sans-serif;
-	color: #7c7c7c;
+	color: #eef0f1;
 }
 
 
