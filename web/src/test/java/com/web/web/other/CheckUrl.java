@@ -1,43 +1,58 @@
 package com.web.web.other;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.web.web.domain.Carcas;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
 
 public class CheckUrl {
-    public static String valid_URL;
+    private Document document;
+    public static String links, artist, track_name, url, getUrl, photo_link;
+    String server = "https://ru.muzikavsem.org";
+    public static String Name;
+    public static String Artist;
+    public static String MASSIVE_URL;
 
+    public static ArrayList<Carcas> newTrackList = new ArrayList();
+    public void tracksNew() throws IOException {
+        document = Jsoup.connect
+                ("https://ru.muzikavsem.org/tracks-new").get();
+        int num = document.getElementsByClass("top-tracks__download-btn clr-btn").size();
+       newTrackList.clear();
 
-    public void СomLink(String a, String b) {
+        for (int i = 0; i < num; i++) {
+            Element path = document.getElementsByClass("top-tracks__download-btn clr-btn").get(i);
+            Element name = document.getElementsByClass("top-tracks__track").get(i);
+            Element title = document.getElementsByClass("top-tracks__artist").get(i);
+            Element photo = document.getElementsByClass("top-tracks__img").get(i);
+            String img = photo.attr("style");
+            String newStr = img.replaceAll("background-image: url", (""))
+                    .replaceAll("\\(", "")
+                    .replaceAll("\\)", "")
+                    .replaceAll("'", "")
+                    .replaceAll(";", "");
 
-        if (a == b) {
-            System.out.println("+");
-        } else {
-            System.out.println("-");
-        }
-    }
+            String cut = "https://ru.muzikavsem.org" + newStr; // 34 (35,36)
 
+            links = path.attr("href");
+            artist = name.text();
+            track_name = title.text();
+            photo_link = cut;
+            url = links;
 
-    public void validator() throws IOException {
-        ParseTest parse = new ParseTest();
-        Exception e = new Exception();
-        URL url = new URL(parse.PLAY_URL);
-        HttpURLConnection http = (HttpURLConnection) url.openConnection();
-        String statusCode = String.valueOf(http.getResponseCode());
-        System.out.println("server 1:" + statusCode);
-        if (statusCode != e.getMessage()) {
-            URL url2 = new URL(parse.PLAY_URL_2);
-            HttpURLConnection http2 = (HttpURLConnection) url2.openConnection();
-            String statusCode2 = String.valueOf(http2.getResponseCode());
-            System.out.println("server 2:" + statusCode2);
-            valid_URL = parse.PLAY_URL_2;
-            if (statusCode2 != e.getMessage()) {
-                URL url3 = new URL(parse.PLAY_URL_3);
-                HttpURLConnection http3 = (HttpURLConnection) url3.openConnection();
-                String statusCode3 = String.valueOf(http3.getResponseCode());
-                System.out.println("server 3:" + statusCode3);
-                valid_URL = parse.PLAY_URL_3;
-            }
+            MASSIVE_URL = server + url;
+            Artist = artist;
+            Name = track_name;
+
+            Carcas carcas = new Carcas(MASSIVE_URL, Artist, Name, photo_link);
+            newTrackList.add(carcas);
+            System.out.println(newTrackList.toString());
         }
     }
 }

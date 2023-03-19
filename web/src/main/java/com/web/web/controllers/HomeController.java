@@ -20,15 +20,19 @@ public class HomeController  {
 
     SearchMusic searchMusic = new SearchMusic();
 
+
+
     @Autowired
     private Repository repository;
 
+
     @GetMapping(value = "/")
-    public String home(Model model) throws IOException {
+    public String index(Model model) throws IOException {
+        searchMusic.tracksNew();
+        model.addAttribute("trackList",SearchMusic.newTrackList);
 
         return "index";
     }
-
 
 
     @GetMapping(value = "/result")
@@ -36,17 +40,19 @@ public class HomeController  {
 
         Iterable<TestEntity> testEntities = repository.findAll();
 
-        model.addAttribute("continents",SearchMusic.list);
+       model.addAttribute("continents",SearchMusic.list);
+
 
         return "result";
     }
 
+
+
     @PostMapping(value = "/")
     public String search(@RequestPart String search,String name,String artist,String link, Model model) throws IOException {
-
         link = SearchMusic.getUrl;
-        TestEntity post = new TestEntity(search,link);
-        searchMusic.search(search);
+        TestEntity post = new TestEntity(search,link);;
+        searchMusic.search(search);;
         repository.save(post);
         System.out.println(link);
         return "redirect:/result";

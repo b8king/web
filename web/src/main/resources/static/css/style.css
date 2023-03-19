@@ -10,14 +10,7 @@ audio::-webkit-media-controls-panel {
 }
 
 
-.video-content{
-    width: 40%;
-    height: 40%;
 
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-}
 
 
 .fit-picture {
@@ -37,16 +30,39 @@ audio::-webkit-media-controls-panel {
     margin-right: 600px;
 }
 
+.bottom {
+    margin-top: -16px;
+    height: 30px;
+}
 
 
-
-
+.top-text h3 {
+    font-size: 1.5em;
+    margin-right: 690px;
+}
+.content-border {
+    /* border-top-style: double; */
+    /* border-right-style: double; */
+    border-bottom-style: double;
+    /* border-left-style: double; */
+    border-radius: 0px;
+    height: auto;
+    width: 800px;
+    margin: auto;
+    outline: 0;
+    outline-offset: 0;
+}
 
 
 audio, canvas, progress, video {
-    display: inline-block;
-    vertical-align: baseline;
-    margin-top: -40px;
+
+    /* display: inline-block; */
+    /* vertical-align: baseline; */
+    margin-top: -60px;
+    height: 30px;
+    width: 500px;
+    /* margin-right: -100px; */
+    margin-left: 30px;
 }
 
 

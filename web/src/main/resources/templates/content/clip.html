@@ -1,3 +1,17 @@
 <div th:fragment="clip">
-    <div id="player" data-plyr-provider="youtube" data-plyr-embed-id=""></div>
+    <div class="content-border">
+        <div class="top-text"><h3>Новинки</h3></div>
+        <section th:each="continet : ${trackList}">
+            <div id="rectangle">
+                <a class="song"  th:text="${continet.trackName}"></a>
+                <a class="artist" th:text="${continet.artist}"></a>
+                <img class="fit-picture" th:src="${continet.photo}" onerror="https://yt3.googleusercontent.com/ytc/AMLnZu-ygBwGvxbfcHoTyIRfJG4a-XZCkipVEFCZHkma=s900-c-k-c0x00ffffff-no-rj">
+                <div class="bottom">
+                    <audio id="player" controls>
+                        <source th:src="${continet.ToLink}" type="audio/mp3"/>
+                    </audio>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
