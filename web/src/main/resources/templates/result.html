@@ -18,6 +18,7 @@
 
         <section th:each="continet : ${continents}">
             <div id="rectangle">
+
                 <a class="song"  th:text="${continet.trackName}"></a>
                 <a class="artist" th:text="${continet.artist}"></a>
                 <img class="fit-picture" th:src="${continet.photo}" onerror="https://yt3.googleusercontent.com/ytc/AMLnZu-ygBwGvxbfcHoTyIRfJG4a-XZCkipVEFCZHkma=s900-c-k-c0x00ffffff-no-rj">
@@ -25,6 +26,7 @@
                 <audio id="player" controls>
                   <source th:src="${continet.ToLink}" type="audio/mp3"/>
                 </audio>
+                  <a th:href="'/content' + ${continet.id}" class="buttonClick">❤</a>
               </div>
             </div>
         </section>

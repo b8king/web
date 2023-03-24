@@ -50,7 +50,7 @@ public class CheckUrl {
             Artist = artist;
             Name = track_name;
 
-            Carcas carcas = new Carcas(MASSIVE_URL, Artist, Name, photo_link);
+            Carcas carcas = new Carcas(i,MASSIVE_URL, Artist, Name, photo_link);
             newTrackList.add(carcas);
             System.out.println(newTrackList.toString());
         }

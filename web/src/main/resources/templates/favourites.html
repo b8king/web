@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'/>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css"/>
+  <link href="${pageContext.request.contextPath} ../../css/style.css" rel="stylesheet">
+  <title>Music</title>
+</head>
+<header th:replace="/block/header :: head"></header>
+<body>
+
+<section th:each="continet : ${like}">
+  <div id="rectangle">
+    <a class="song"  th:text="${continet.trackName}"></a>
+    <a class="artist" th:text="${continet.artist}"></a>
+    <img class="fit-picture" th:src="${continet.photo}" onerror="https://yt3.googleusercontent.com/ytc/AMLnZu-ygBwGvxbfcHoTyIRfJG4a-XZCkipVEFCZHkma=s900-c-k-c0x00ffffff-no-rj">
+    <div class="bottom">
+      <audio id="player" controls>
+        <source th:src="${continet.ToLink}" type="audio/mp3"/>
+      </audio>
+      <a th:href="'/delete=' + ${continet.artist}" class="buttonClickDel">✖</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

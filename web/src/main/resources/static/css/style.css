@@ -2,6 +2,15 @@
  * Globals
  */
 
+ .backBlu a{
+ color: #35bcff;
+ }
+
+
+ .backRed a{
+ color: #35bcff;
+ }
+
 /* кастом плеер */
 audio::-webkit-media-controls-panel {
   background-color: #8D929C;
@@ -9,8 +18,22 @@ audio::-webkit-media-controls-panel {
   border:0;
 }
 
-
-
+.buttonClick {
+    background: #0380b66b;
+    margin-top: -16px;
+    margin-left: 28px;
+    position: absolute;
+    border-radius: 6px;
+    padding: 7px 13px;
+}
+.buttonClickDel {
+    background: #b603034a;
+    margin-top: -16px;
+    margin-left: 28px;
+    position: absolute;
+    border-radius: 6px;
+    padding: 7px 13px;
+}
 
 
 .fit-picture {
@@ -38,12 +61,12 @@ audio::-webkit-media-controls-panel {
 
 .top-text h3 {
     font-size: 1.5em;
-    margin-right: 690px;
+    margin-right: 615px;
 }
 .content-border {
     /* border-top-style: double; */
     /* border-right-style: double; */
-    border-bottom-style: double;
+    /*border-bottom-style: double;*/
     /* border-left-style: double; */
     border-radius: 0px;
     height: auto;

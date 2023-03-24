@@ -3,12 +3,14 @@ package com.web.web.domain;
 import java.util.ArrayList;
 
 public class Carcas {
+    private int id;
     private String toLink;
     private String artist;
     private String trackName;
     private String photo;
 
-    public Carcas(String toLink, String artist, String trackName,String photo) {
+    public Carcas(int id,String toLink, String artist, String trackName,String photo) {
+        this.id = id;
         this.toLink = toLink;
         this.artist = artist;
         this.trackName = trackName;
@@ -62,10 +64,20 @@ public class Carcas {
         this.photo = photo;
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Carcas{" +
-                "toLink='" + toLink + '\'' +
+                "id=" + id +
+                ", toLink='" + toLink + '\'' +
                 ", artist='" + artist + '\'' +
                 ", trackName='" + trackName + '\'' +
                 ", photo='" + photo + '\'' +

@@ -16,16 +16,18 @@ public class SearchMusic {
     public static String Name;
     public static String Artist;
     public static String MASSIVE_URL;
+    public static int num;
 
     public static ArrayList<Carcas> list = new ArrayList();
     public static ArrayList<Carcas> newTrackList = new ArrayList();
-
+    public static Carcas favouritesList = new Carcas();
     public void search(String get_search) throws IOException {
 
         document = Jsoup.connect
                 ("https://ru.muzikavsem.org/search/" + get_search).get();
-        int num = document.getElementsByClass("top-tracks__download-btn clr-btn").size();
+        num = document.getElementsByClass("top-tracks__download-btn clr-btn").size();
         list.clear();
+
 
         for (int i = 0; i < num; i++) {
             Element path = document.getElementsByClass("top-tracks__download-btn clr-btn").get(i);
@@ -51,18 +53,21 @@ public class SearchMusic {
             Artist = artist;
             Name = track_name;
 
-            Carcas carcas = new Carcas(MASSIVE_URL, Artist, Name, photo_link);
+            Carcas carcas = new Carcas(i,MASSIVE_URL, Artist, Name, photo_link);
             list.add(carcas);
-            System.out.println(list.toString());
+
+            //System.out.println(list.toString());
 
 
         }
     }
     public void tracksNew() throws IOException {
+        SearchMusic.newTrackList.clear();
+
         document = Jsoup.connect
                 ("https://ru.muzikavsem.org/tracks-new").get();
-        int num = document.getElementsByClass("top-tracks__download-btn clr-btn").size();
-        newTrackList.clear();
+        num = document.getElementsByClass("top-tracks__download-btn clr-btn").size();
+
 
         for (int i = 0; i < num; i++) {
             Element path = document.getElementsByClass("top-tracks__download-btn clr-btn").get(i);
@@ -88,9 +93,11 @@ public class SearchMusic {
             Artist = artist;
             Name = track_name;
 
-            Carcas carcas = new Carcas(MASSIVE_URL, Artist, Name, photo_link);
+            Carcas carcas = new Carcas(i,MASSIVE_URL, Artist, Name, photo_link);
             newTrackList.add(carcas);
-            System.out.println(newTrackList.toString());
+
+
+           // System.out.println(newTrackList.indexOf(carcas));
         }
     }
 }
